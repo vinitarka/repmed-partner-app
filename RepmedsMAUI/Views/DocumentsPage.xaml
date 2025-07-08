@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RepmedApp.Views.DocumentsPage"
+             Title="Personal Documents"
+             BackgroundColor="White">
+
+    <Grid RowDefinitions="Auto,*,Auto" 
+          Padding="20"
+          RowSpacing="20">
+
+        <!-- Header -->
+        <StackLayout Grid.Row="0" Spacing="10">
+            <Label Text="Personal Documents"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="#004D40"/>
+            
+            <Label Text="Upload focused photos of below documents for faster verification"
+                   FontSize="14"
+                   TextColor="#666666"/>
+        </StackLayout>
+
+        <!-- Document List -->
+        <StackLayout Grid.Row="1" Spacing="15">
+            <!-- Aadhar Card -->
+            <Frame BorderColor="#E0E0E0"
+                   Padding="15"
+                   CornerRadius="8"
+                   HasShadow="False">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToAadharDetailsCommand}"/>
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Text="Aadhar Card"
+                           TextColor="#212121"
+                           FontSize="16"
+                           VerticalOptions="Center"/>
+                    <Image Grid.Column="1"
+                           Source="chevron_right.png"
+                           HeightRequest="24"
+                           WidthRequest="24"/>
+                </Grid>
+            </Frame>
+
+            <!-- PAN Card -->
+            <Frame BorderColor="#E0E0E0"
+                   Padding="15"
+                   CornerRadius="8"
+                   HasShadow="False">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToPanCardCommand}"/>
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Text="PAN Card"
+                           TextColor="#212121"
+                           FontSize="16"
+                           VerticalOptions="Center"/>
+                    <Image Grid.Column="1"
+                           Source="chevron_right.png"
+                           HeightRequest="24"
+                           WidthRequest="24"/>
+                </Grid>
+            </Frame>
+
+            <!-- Driving License -->
+            <Frame BorderColor="#E0E0E0"
+                   Padding="15"
+                   CornerRadius="8"
+                   HasShadow="False">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToDrivingLicenseCommand}"/>
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Text="Driving License"
+                           TextColor="#212121"
+                           FontSize="16"
+                           VerticalOptions="Center"/>
+                    <Image Grid.Column="1"
+                           Source="chevron_right.png"
+                           HeightRequest="24"
+                           WidthRequest="24"/>
+                </Grid>
+            </Frame>
+        </StackLayout>
+
+        <!-- Submit Button -->
+        <Button Grid.Row="2"
+                Text="Submit"
+                Command="{Binding SubmitCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                HeightRequest="50"/>
+
+    </Grid>
+</ContentPage>
