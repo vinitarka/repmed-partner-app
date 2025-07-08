@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RepmedApp.Views.PersonalInformationPage"
+             Title="Personal Information"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <Grid RowDefinitions="Auto,*,Auto" 
+              Padding="20"
+              RowSpacing="20">
+
+            <!-- Header -->
+            <StackLayout Grid.Row="0" Spacing="10">
+                <Label Text="Personal Information"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="#004D40"/>
+                
+                <Label Text="Enter the details below so we can get to know and serve you better"
+                       FontSize="14"
+                       TextColor="#666666"/>
+            </StackLayout>
+
+            <!-- Form Fields -->
+            <StackLayout Grid.Row="1" Spacing="20">
+                <!-- Profile Picture -->
+                <StackLayout HorizontalOptions="Center" Spacing="10">
+                    <Frame CornerRadius="75"
+                           HeightRequest="150"
+                           WidthRequest="150"
+                           Padding="0"
+                           IsClippedToBounds="True"
+                           BorderColor="#E0E0E0"
+                           HasShadow="False">
+                        <Image Source="{Binding ProfilePicture}"
+                               Aspect="AspectFill"/>
+                    </Frame>
+                    <Button Text="Upload Photo"
+                            Command="{Binding UploadPhotoCommand}"
+                            BackgroundColor="Transparent"
+                            TextColor="#004D40"
+                            BorderColor="#004D40"
+                            BorderWidth="1"
+                            WidthRequest="150"/>
+                </StackLayout>
+
+                <!-- Full Name -->
+                <StackLayout Spacing="5">
+                    <Label Text="Full Name"
+                           FontSize="14"
+                           TextColor="#666666"/>
+                    <Frame BorderColor="#E0E0E0"
+                           Padding="15,5"
+                           CornerRadius="8"
+                           HasShadow="False">
+                        <Entry Placeholder="Please enter full name"
+                               Text="{Binding FullName}"/>
+                    </Frame>
+                </StackLayout>
+
+                <!-- Date of Birth -->
+                <StackLayout Spacing="5">
+                    <Label Text="Date of Birth"
+                           FontSize="14"
+                           TextColor="#666666"/>
+                    <Frame BorderColor="#E0E0E0"
+                           Padding="15,5"
+                           CornerRadius="8"
+                           HasShadow="False">
+                        <DatePicker Date="{Binding DateOfBirth}"
+                                  Format="dd-MM-yyyy"
+                                  TextColor="#212121"/>
+                    </Frame>
+                </StackLayout>
+
+                <!-- Email ID -->
+                <StackLayout Spacing="5">
+                    <Label Text="Email ID"
+                           FontSize="14"
+                           TextColor="#666666"/>
+                    <Frame BorderColor="#E0E0E0"
+                           Padding="15,5"
+                           CornerRadius="8"
+                           HasShadow="False">
+                        <Entry Placeholder="Enter email id"
+                               Text="{Binding EmailId}"
+                               Keyboard="Email"/>
+                    </Frame>
+                </StackLayout>
+
+                <!-- Alternative Mobile Number -->
+                <StackLayout Spacing="5">
+                    <Label Text="Alternative Mobile Number"
+                           FontSize="14"
+                           TextColor="#666666"/>
+                    <Frame BorderColor="#E0E0E0"
+                           Padding="15,5"
+                           CornerRadius="8"
+                           HasShadow="False">
+                        <Entry Placeholder="+91 9999988888"
+                               Text="{Binding AlternativeMobileNumber}"
+                               Keyboard="Telephone"/>
+                    </Frame>
+                </StackLayout>
+
+                <!-- Address -->
+                <StackLayout Spacing="5">
+                    <Label Text="Enter complete address here"
+                           FontSize="14"
+                           TextColor="#666666"/>
+                    <Frame BorderColor="#E0E0E0"
+                           Padding="15,5"
+                           CornerRadius="8"
+                           HasShadow="False">
+                        <Editor Placeholder="Search address"
+                                Text="{Binding Address}"
+                                HeightRequest="100"
+                                AutoSize="TextChanges"/>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+
+            <!-- Submit Button -->
+            <Button Grid.Row="2"
+                    Text="Submit"
+                    Command="{Binding SubmitCommand}"
+                    IsEnabled="{Binding IsNotBusy}"
+                    HeightRequest="50"/>
+
+        </Grid>
+    </ScrollView>
+</ContentPage>
