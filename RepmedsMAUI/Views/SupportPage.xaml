@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RepmedApp.Views.SupportPage"
+             Title="Support"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <Grid RowDefinitions="Auto,*,Auto" 
+              Padding="20"
+              RowSpacing="20">
+
+            <!-- Header -->
+            <StackLayout Grid.Row="0" Spacing="10">
+                <Label Text="Support"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="#004D40"/>
+            </StackLayout>
+
+            <!-- Form Fields -->
+            <StackLayout Grid.Row="1" Spacing="20">
+                <!-- Full Name -->
+                <StackLayout Spacing="5">
+                    <Label Text="Full Name"
+                           FontSize="14"
+                           TextColor="#666666"/>
+                    <Frame BorderColor="#E0E0E0"
+                           Padding="15,5"
+                           CornerRadius="8"
+                           HasShadow="False">
+                        <Entry Placeholder="Raman Sharma"
+                               Text="{Binding FullName}"/>
+                    </Frame>
+                </StackLayout>
+
+                <!-- Email ID -->
+                <StackLayout Spacing="5">
+                    <Label Text="Email Id"
+                           FontSize="14"
+                           TextColor="#666666"/>
+                    <Frame BorderColor="#E0E0E0"
+                           Padding="15,5"
+                           CornerRadius="8"
+                           HasShadow="False">
+                        <Entry Placeholder="loremipsum@gmail.com"
+                               Text="{Binding EmailId}"
+                               Keyboard="Email"/>
+                    </Frame>
+                </StackLayout>
+
+                <!-- Subject -->
+                <StackLayout Spacing="5">
+                    <Label Text="Subject"
+                           FontSize="14"
+                           TextColor="#666666"/>
+                    <Frame BorderColor="#E0E0E0"
+                           Padding="15,5"
+                           CornerRadius="8"
+                           HasShadow="False">
+                        <Entry Placeholder="Write your concern"
+                               Text="{Binding Subject}"/>
+                    </Frame>
+                </StackLayout>
+
+                <!-- Message -->
+                <StackLayout Spacing="5">
+                    <Label Text="Message"
+                           FontSize="14"
+                           TextColor="#666666"/>
+                    <Frame BorderColor="#E0E0E0"
+                           Padding="15,5"
+                           CornerRadius="8"
+                           HasShadow="False">
+                        <Editor Placeholder="Write Message"
+                                Text="{Binding Message}"
+                                HeightRequest="150"
+                                AutoSize="TextChanges"/>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+
+            <!-- Submit Button -->
+            <Button Grid.Row="2"
+                    Text="Submit"
+                    Command="{Binding SubmitCommand}"
+                    IsEnabled="{Binding IsNotBusy}"
+                    HeightRequest="50"
+                    Margin="0,0,0,20"/>
+
+        </Grid>
+    </ScrollView>
+</ContentPage>
