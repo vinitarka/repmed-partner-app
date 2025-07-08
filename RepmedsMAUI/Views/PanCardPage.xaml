@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RepmedApp.Views.PanCardPage"
+             Title="PAN Card Details"
+             BackgroundColor="White">
+
+    <Grid RowDefinitions="Auto,*,Auto" 
+          Padding="20"
+          RowSpacing="20">
+
+        <!-- Header -->
+        <StackLayout Grid.Row="0" Spacing="10">
+            <Label Text="PAN Card Details"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="#004D40"/>
+            
+            <Label Text="Upload focused photo of your PAN Card for faster verification"
+                   FontSize="14"
+                   TextColor="#666666"/>
+        </StackLayout>
+
+        <!-- Upload Section -->
+        <Frame Grid.Row="1"
+               BorderColor="#E0E0E0"
+               Padding="0"
+               CornerRadius="8"
+               HasShadow="False"
+               HeightRequest="200"
+               VerticalOptions="Start">
+            <Grid>
+                <Image Source="{Binding PanImage}"
+                       Aspect="AspectFit"
+                       HeightRequest="200"/>
+                
+                <Button Text="{Binding IsPanUploaded, Converter={StaticResource BoolToUploadTextConverter}}"
+                        Command="{Binding UploadPanCommand}"
+                        BackgroundColor="#004D40"
+                        TextColor="White"
+                        HeightRequest="40"
+                        WidthRequest="120"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"/>
+            </Grid>
+        </Frame>
+
+        <!-- Submit Button -->
+        <Button Grid.Row="2"
+                Text="Submit"
+                Command="{Binding SubmitCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                HeightRequest="50"/>
+
+    </Grid>
+</ContentPage>
