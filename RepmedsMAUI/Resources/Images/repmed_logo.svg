@@ -1,0 +1,8 @@
+<svg width="240" height="60" viewBox="0 0 240 60" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .logo-text { font-family: Arial, sans-serif; font-size: 40px; font-weight: bold; fill: #004D40; }
+        .tagline { font-family: Arial, sans-serif; font-size: 12px; fill: #26A69A; }
+    </style>
+    <text x="10" y="45" class="logo-text">repmed</text>
+    <text x="10" y="58" class="tagline">CLICK TO CURE IN NO TIME</text>
+</svg>
