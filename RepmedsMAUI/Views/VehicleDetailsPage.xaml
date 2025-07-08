@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RepmedApp.Views.VehicleDetailsPage"
+             Title="Vehicle Details"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <Grid RowDefinitions="Auto,*,Auto" 
+              Padding="20"
+              RowSpacing="20">
+
+            <!-- Header -->
+            <StackLayout Grid.Row="0" Spacing="10">
+                <Label Text="Vehicle Details"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="#004D40"/>
+                
+                <Label Text="Enter the details below so we can get to know and serve you better"
+                       FontSize="14"
+                       TextColor="#666666"/>
+            </StackLayout>
+
+            <!-- Form Fields -->
+            <StackLayout Grid.Row="1" Spacing="20">
+                <!-- Vehicle Number -->
+                <StackLayout Spacing="5">
+                    <Label Text="Vehicle number"
+                           FontSize="14"
+                           TextColor="#666666"/>
+                    <Frame BorderColor="#E0E0E0"
+                           Padding="15,5"
+                           CornerRadius="8"
+                           HasShadow="False">
+                        <Entry Placeholder="Please enter vehicle number"
+                               Text="{Binding VehicleNumber}"/>
+                    </Frame>
+                </StackLayout>
+
+                <Label Text="Completed your RC details"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="#004D40"/>
+
+                <!-- Registration Number -->
+                <StackLayout Spacing="5">
+                    <Label Text="Reg. no."
+                           FontSize="14"
+                           TextColor="#666666"/>
+                    <Frame BorderColor="#E0E0E0"
+                           Padding="15,5"
+                           CornerRadius="8"
+                           HasShadow="False">
+                        <Entry Placeholder="xx98xx98x98"
+                               Text="{Binding RegistrationNumber}"/>
+                    </Frame>
+                </StackLayout>
+
+                <!-- Chassis Number -->
+                <StackLayout Spacing="5">
+                    <Label Text="Chassis no."
+                           FontSize="14"
+                           TextColor="#666666"/>
+                    <Frame BorderColor="#E0E0E0"
+                           Padding="15,5"
+                           CornerRadius="8"
+                           HasShadow="False">
+                        <Entry Placeholder="9999988888"
+                               Text="{Binding ChassisNumber}"/>
+                    </Frame>
+                </StackLayout>
+
+                <!-- Engine Number -->
+                <StackLayout Spacing="5">
+                    <Label Text="Engine/motor no."
+                           FontSize="14"
+                           TextColor="#666666"/>
+                    <Frame BorderColor="#E0E0E0"
+                           Padding="15,5"
+                           CornerRadius="8"
+                           HasShadow="False">
+                        <Entry Placeholder="0000101010"
+                               Text="{Binding EngineNumber}"/>
+                    </Frame>
+                </StackLayout>
+
+                <!-- Owner Name -->
+                <StackLayout Spacing="5">
+                    <Label Text="Owner name"
+                           FontSize="14"
+                           TextColor="#666666"/>
+                    <Frame BorderColor="#E0E0E0"
+                           Padding="15,5"
+                           CornerRadius="8"
+                           HasShadow="False">
+                        <Entry Placeholder="Full name"
+                               Text="{Binding OwnerName}"/>
+                    </Frame>
+                </StackLayout>
+
+                <!-- Address -->
+                <StackLayout Spacing="5">
+                    <Label Text="Address"
+                           FontSize="14"
+                           TextColor="#666666"/>
+                    <Frame BorderColor="#E0E0E0"
+                           Padding="15,5"
+                           CornerRadius="8"
+                           HasShadow="False">
+                        <Editor Placeholder="write address"
+                                Text="{Binding Address}"
+                                HeightRequest="100"
+                                AutoSize="TextChanges"/>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+
+            <!-- Submit Button -->
+            <Button Grid.Row="2"
+                    Text="Submit"
+                    Command="{Binding SubmitCommand}"
+                    IsEnabled="{Binding IsNotBusy}"
+                    HeightRequest="50"
+                    Margin="0,0,0,20"/>
+
+        </Grid>
+    </ScrollView>
+</ContentPage>
