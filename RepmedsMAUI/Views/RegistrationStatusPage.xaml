@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:RepmedApp.Converters"
+             x:Class="RepmedApp.Views.RegistrationStatusPage"
+             Title="Registration Status"
+             BackgroundColor="White">
+
+    <ContentPage.Resources>
+        <converters:StatusToColorConverter x:Key="StatusToColorConverter"/>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*,Auto" 
+          Padding="20"
+          RowSpacing="20">
+
+        <!-- Header -->
+        <Frame Grid.Row="0"
+               BackgroundColor="#E8F5E9"
+               Padding="20"
+               CornerRadius="8"
+               HasShadow="False">
+            <Grid ColumnDefinitions="*,Auto" RowSpacing="5">
+                <StackLayout Grid.Column="0" Spacing="5">
+                    <Label Text="Your application is under Verification"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="#004D40"/>
+                    <Label Text="Account will get activated in 48hrs"
+                           FontSize="14"
+                           TextColor="#666666"/>
+                </StackLayout>
+                <Image Grid.Column="1"
+                       Source="verification_icon.png"
+                       HeightRequest="60"
+                       WidthRequest="60"
+                       VerticalOptions="Center"/>
+            </Grid>
+        </Frame>
+
+        <!-- Status List -->
+        <ScrollView Grid.Row="1">
+            <StackLayout Spacing="15">
+                <!-- Personal Information -->
+                <Frame BorderColor="#E0E0E0"
+                       Padding="15"
+                       CornerRadius="8"
+                       HasShadow="False">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ViewPersonalInfoCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <Grid ColumnDefinitions="*,Auto,Auto">
+                        <Label Text="Personal Information"
+                               TextColor="#212121"
+                               FontSize="16"
+                               VerticalOptions="Center"/>
+                        <Label Grid.Column="1"
+                               Text="{Binding IsPersonalInfoApproved, Converter={StaticResource StatusToColorConverter}, ConverterParameter=text}"
+                               TextColor="{Binding IsPersonalInfoApproved, Converter={StaticResource StatusToColorConverter}}"
+                               Margin="0,0,10,0"
+                               VerticalOptions="Center"/>
+                        <Image Grid.Column="2"
+                               Source="chevron_right.png"
+                               HeightRequest="24"
+                               WidthRequest="24"/>
+                    </Grid>
+                </Frame>
+
+                <!-- Documents -->
+                <Frame BorderColor="#E0E0E0"
+                       Padding="15"
+                       CornerRadius="8"
+                       HasShadow="False">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ViewDocumentsCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <Grid ColumnDefinitions="*,Auto,Auto">
+                        <Label Text="Personal Documents"
+                               TextColor="#212121"
+                               FontSize="16"
+                               VerticalOptions="Center"/>
+                        <Label Grid.Column="1"
+                               Text="Rejected"
+                               TextColor="#F44336"
+                               Margin="0,0,10,0"
+                               VerticalOptions="Center"/>
+                        <Image Grid.Column="2"
+                               Source="chevron_right.png"
+                               HeightRequest="24"
+                               WidthRequest="24"/>
+                    </Grid>
+                </Frame>
+
+                <!-- Vehicle Details -->
+                <Frame BorderColor="#E0E0E0"
+                       Padding="15"
+                       CornerRadius="8"
+                       HasShadow="False">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ViewVehicleDetailsCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <Grid ColumnDefinitions="*,Auto,Auto">
+                        <Label Text="Vehicle Details"
+                               TextColor="#212121"
+                               FontSize="16"
+                               VerticalOptions="Center"/>
+                        <Label Grid.Column="1"
+                               Text="Pending"
+                               TextColor="#FFA000"
+                               Margin="0,0,10,0"
+                               VerticalOptions="Center"/>
+                        <Image Grid.Column="2"
+                               Source="chevron_right.png"
+                               HeightRequest="24"
+                               WidthRequest="24"/>
+                    </Grid>
+                </Frame>
+
+                <!-- Bank Details -->
+                <Frame BorderColor="#E0E0E0"
+                       Padding="15"
+                       CornerRadius="8"
+                       HasShadow="False">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ViewBankDetailsCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <Grid ColumnDefinitions="*,Auto,Auto">
+                        <Label Text="Bank Account Details"
+                               TextColor="#212121"
+                               FontSize="16"
+                               VerticalOptions="Center"/>
+                        <Label Grid.Column="1"
+                               Text="{Binding IsBankDetailsApproved, Converter={StaticResource StatusToColorConverter}, ConverterParameter=text}"
+                               TextColor="{Binding IsBankDetailsApproved, Converter={StaticResource StatusToColorConverter}}"
+                               Margin="0,0,10,0"
+                               VerticalOptions="Center"/>
+                        <Image Grid.Column="2"
+                               Source="chevron_right.png"
+                               HeightRequest="24"
+                               WidthRequest="24"/>
+                    </Grid>
+                </Frame>
+
+                <!-- Emergency Details -->
+                <Frame BorderColor="#E0E0E0"
+                       Padding="15"
+                       CornerRadius="8"
+                       HasShadow="False">
+                    <Grid ColumnDefinitions="*,Auto,Auto">
+                        <Label Text="Emergency Details"
+                               TextColor="#212121"
+                               FontSize="16"
+                               VerticalOptions="Center"/>
+                        <Label Grid.Column="1"
+                               Text="{Binding IsEmergencyDetailsApproved, Converter={StaticResource StatusToColorConverter}, ConverterParameter=text}"
+                               TextColor="{Binding IsEmergencyDetailsApproved, Converter={StaticResource StatusToColorConverter}}"
+                               Margin="0,0,10,0"
+                               VerticalOptions="Center"/>
+                        <Image Grid.Column="2"
+                               Source="chevron_right.png"
+                               HeightRequest="24"
+                               WidthRequest="24"/>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Contact Support -->
+        <StackLayout Grid.Row="2" 
+                     HorizontalOptions="Center"
+                     Orientation="Horizontal"
+                     Spacing="5">
+            <Label Text="Need Help?"
+                   TextColor="#666666"
+                   VerticalOptions="Center"/>
+            <Label Text="Contact Us"
+                   TextColor="#004D40"
+                   TextDecorations="Underline"
+                   VerticalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ContactSupportCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+
+    </Grid>
+</ContentPage>
